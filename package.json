@@ -1,0 +1,12 @@
+{
+  "name": "FrostBot",
+  "version": "1.0.0",
+  "description": "The official TFK discord bot",
+  "main": "bot.js",
+  "author": "ELI-STEPHEN-RALPH",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "discord.js": "^11.2.1",
+    "winston": "^2.4.0"
+  }
+}
