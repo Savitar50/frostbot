@@ -139,14 +139,14 @@ client.on("message", async message => {
       return message.reply("Beep Bop! List of commands (remember to use the TFK prefix!) : 1. Ping - Pings the server 2. Chill - Kicks a Player 3. Freeze - Bans a player 4. Simon - Repeats what yiou said! 5. Rules -  Lists server rules 6. Purge - Purges old messages 7. List - Lists commands 8. Up - Notifys players that the server is up 9. Down - Notifys players that the server is down");
   }
   if(command === "up") {
-    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
   const sayMessage = args.join(" ");
+    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
     message.delete().catch(O_o=>{}); 
       return message.reply("@everyone Beep Bop, The server is up!");
   }
     if(command === "down") {
-     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
    const sayMessage = args.join(" ");
+     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
     message.delete().catch(O_o=>{}); 
       return message.reply("@everyone Beep Bop, The server is down!");
   }
