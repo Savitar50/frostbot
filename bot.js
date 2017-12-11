@@ -143,7 +143,7 @@ client.on("message", async message => {
       return message.reply("@everyone Beep Bop, The server is up!");
   }
     if(command === "down") {
-    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
       return message.reply("@everyone Beep Bop, The server is down!");
   }
 });
