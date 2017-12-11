@@ -136,9 +136,13 @@ client.on("message", async message => {
       return message.reply("Beep Bop! Rules: 1. No Profanity 2. Be respectful to admins 3. Keep mentions to a miminum 4. DO NOT SCREAM INTO THE MIC! IT BUSTS MY CIRCUTS! (SERIOUSLY ITS ANNOYING) ---- For more information about the TFK go to www.thefrostedkingdom.us and connect at play.thefrostmc.us.");
   }
       if(command === "list") {
-      return message.reply("Beep Bop! List of commands (remember to use the TFK prefix!) : 1. Ping - Pings the server 2. Chill - Kicks a Player 3. Freeze - Bans a player 4. Simon - Repeats what yiou said! 5. Rules -  Lists server rules 6. Purge - Purges old messages 7. List - Lists commands");
+      return message.reply("Beep Bop! List of commands (remember to use the TFK prefix!) : 1. Ping - Pings the server 2. Chill - Kicks a Player 3. Freeze - Bans a player 4. Simon - Repeats what yiou said! 5. Rules -  Lists server rules 6. Purge - Purges old messages 7. List - Lists commands 8. Up - Notifys players that the server is up 9. Down - Notifys players that the server is down");
   }
   if(command === "up") {
+    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+      return message.reply("@everyone Beep Bop, The server is going up!");
+  }
+    if(command === "down") {
     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
       return message.reply("@everyone Beep Bop, The server is going up!");
   }
