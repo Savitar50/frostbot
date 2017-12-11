@@ -138,7 +138,10 @@ client.on("message", async message => {
       if(command === "list") {
       return message.reply("Beep Bop! List of commands (remember to use the TFK prefix!) : 1. Ping - Pings the server 2. Chill - Kicks a Player 3. Freeze - Bans a player 4. Simon - Repeats what yiou said! 5. Rules -  Lists server rules 6. Purge - Purges old messages 7. List - Lists commands");
   }
-
+  if(command === "up") {
+    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+      return message.reply("@everyone Beep Bop, The server is going up!");
+  }
 });
 
 client.login(config.token);
