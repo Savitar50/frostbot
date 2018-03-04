@@ -142,13 +142,13 @@ client.on("message", async message => {
   const sayMessage = args.join(" ");
     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
     message.delete().catch(O_o=>{}); 
-      return message.reply("@everyone Beep Bop, The server is up!");
+      return message.reply("@here Beep Bop, The server is up!");
   }
     if(command === "down") {
    const sayMessage = args.join(" ");
      if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
     message.delete().catch(O_o=>{}); 
-      return message.reply("@everyone Beep Bop, The server is down!");
+      return message.reply("@here Beep Bop, The server is down!");
   }
 });
 
