@@ -150,6 +150,34 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{}); 
       return message.reply("@here Beep Bop, The server is down!");
   }
+const fs = module.require('fs');
+module.exports.run = async (bot, message, args) => {
+  if (!message.member.hasPermission('ADMINISTRATOR')) {
+    bot.permMsg(message);
+    return;
+  }
+  if (!message.mentions.members.first() || !args[2]) {
+    bot.errMsg(message);
+    return;
+  }
+  fs.readFile('./warned.json', (err, content) => {
+    if (err) throw err;
+    
+    let parseJson = JSON.parse(content);
+    
+    parseJson[message.mentions.members.first().id] = false;
+    
+    fs.writeFile('./warned.json', JSON.stringify(parseJson, null, '\t'), (err) => {
+      if (err) throw err;
+    });
+  });
+  message.mentions.members.first().user.send(`Unwarn from ${message.guild.name} (${message.guild.id}): ${args.splice(2).join(' ')}`);
+  message.channel.send(`${message.mentions.members.first()} has been unwarned`);
+}
+module.exports.help = {
+  name: 'unwarn',
+  description: 'Unwarns a member with a reason. **unwarn [Member] [Reason]**'
+}
 });
 
 client.login(config.token);
