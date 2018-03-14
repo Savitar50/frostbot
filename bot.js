@@ -178,6 +178,34 @@ module.exports.help = {
   name: 'warn',
   description: 'Warns a member with a reason `warn [member] [reason]`'
 }
+const fs = module.require('fs');
+module.exports.run = async (bot, message, args) => {
+  if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+    bot.permMsg(message);
+    return;
+  }
+  if (!message.mentions.members.first() || !args[2]) {
+    bot.errMsg(message);
+    return;
+  }
+  fs.readFile('./warned.json', (err, content) => {
+    if (err) throw err;
+    
+    let parseJson = JSON.parse(content);
+    
+    parseJson[message.mentions.members.first().id] = false;
+    
+    fs.writeFile('./warned.json', JSON.stringify(parseJson, null, '\t'), (err) => {
+      if (err) throw err;
+    });
+  });
+  message.mentions.members.first().user.send(`Unwarn from ${message.guild.name} (${message.guild.id}): ${args.splice(2).join(' ')}`);
+  message.channel.send(`${message.mentions.members.first()} has been unwarned`);
+}
+module.exports.help = {
+  name: 'unwarn',
+  description: 'Unwarns a member with a reason.'
+}
 });
 
 client.login(config.token);
