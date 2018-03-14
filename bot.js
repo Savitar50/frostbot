@@ -152,7 +152,7 @@ client.on("message", async message => {
   }
 const fs = module.require('fs');
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+  if (!message.member.hasPermission('ADMINISTRATOR')) {
     bot.permMsg(message);
     return;
   }
@@ -180,7 +180,7 @@ module.exports.help = {
 }
 const fs = module.require('fs');
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+  if (!message.member.hasPermission('ADMINISTRATOR')) {
     bot.permMsg(message);
     return;
   }
